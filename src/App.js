@@ -1,23 +1,43 @@
 import logo from './logo.svg';
 import './App.css';
+import TodoList from './TodoList';
 
 function App() {
+  let state = {
+    list: [],
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>React app</h1>
+      <form className="app_form"
+        onSubmit={e => {
+          e.preventDefault();
+          const title = e.target.elements["title"];
+          const body = e.target.elements['description'];
+
+          this.setState(
+            {
+              list: this.state.list.concat({
+                title: title.value,
+                body: body.value,
+              })
+            },
+            () => {
+              title.value = '';
+              body.value = '';
+            }
+          )
+        }}> 
+        <div>
+          <input id="title" placeholder="title" />
+          <textarea id="description" placeholder="description" />
+        </div>
+        <div>
+          <button type="submit">追加</button>
+        </div>
+      </form>
+      <TodoList todos={state.list} />
     </div>
   );
 }

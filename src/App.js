@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import TodoItem from './TodoItem';
+import { Button, Input, TextField } from '@material-ui/core';
 
 class App extends React.Component {
   constructor(props) {
@@ -25,18 +26,23 @@ class App extends React.Component {
                 })
               },
               () => {
-                console.log("this.state");
-                console.log(this.state);
                 title.value = '';
                 body.value = '';
               });
             }}> 
             <div>
-              <input id="title" placeholder="title" />
-              <textarea id="description" placeholder="description" />
+              <Input type="text" id="title" placeholder="title" />
+              <br />
+              <TextField id="description" placeholder="description" />
             </div>
             <div>
-              <button type="submit">追加</button>
+              <Button 
+                variant="contained"
+                color="primary"
+                type="submit"
+              >
+                Send
+              </Button>
             </div>
           </form>
           {this.state.todoList.map(todo => {

@@ -1,45 +1,54 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import TodoList from './TodoList';
+import TodoItem from './TodoItem';
 
-function App() {
-  let state = {
-    list: [],
-  };
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {todoList: []};
+  }
 
-  return (
-    <div className="App">
-      <h1>React app</h1>
-      <form className="app_form"
-        onSubmit={e => {
-          e.preventDefault();
-          const title = e.target.elements["title"];
-          const body = e.target.elements['description'];
+  render() {
+    return (
+        <div className="App">
+          <h1>React app</h1>
+          <form className="app_form"
+            onSubmit={e => {
+              e.preventDefault();
+              const title = e.target.elements["title"];
+              const body = e.target.elements['description'];
 
-          this.setState(
-            {
-              list: this.state.list.concat({
-                title: title.value,
-                body: body.value,
+              this.setState({
+                todoList: this.state.todoList.concat({
+                  title: title.value,
+                  body: body.value,
+                })
+              },
+              () => {
+                console.log("this.state");
+                console.log(this.state);
+                title.value = '';
+                body.value = '';
+              });
+            }}> 
+            <div>
+              <input id="title" placeholder="title" />
+              <textarea id="description" placeholder="description" />
+            </div>
+            <div>
+              <button type="submit">追加</button>
+            </div>
+          </form>
+          {this.state.todoList.map(todo => {
+            return <TodoItem key={todo.title} title={todo.title} body={todo.body} onClick={() => {
+              this.setState({
+                todoList: this.state.todoList.filter(x => x !== todo)
               })
-            },
-            () => {
-              title.value = '';
-              body.value = '';
-            }
-          )
-        }}> 
-        <div>
-          <input id="title" placeholder="title" />
-          <textarea id="description" placeholder="description" />
+            }} />
+          })}
         </div>
-        <div>
-          <button type="submit">追加</button>
-        </div>
-      </form>
-      <TodoList todos={state.list} />
-    </div>
-  );
+    );
+  }
 }
 
 export default App;

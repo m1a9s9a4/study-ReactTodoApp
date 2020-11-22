@@ -7,6 +7,8 @@ const getTodos = state => state.todos;
 export const getVisibleTodos = createSelector(
     [getVisibilityFilter, getTodos],
     (visibilityFilter, todos) => {
+        console.log(visibilityFilter);
+        console.log(todos);
         switch (visibilityFilter) {
             case SHOW_ALL:
                 return todos;

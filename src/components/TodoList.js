@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
 
+//ここが表示されていない
 const TodoList = ({ filteredTodos, actions }) => (
     <ul className="todo-list">
         {filteredTodos.map(todo => {
-            <TodoItem key={todo.id} todo={todo} {...actions} />
+            return <TodoItem key={todo.id} todo={todo} {...actions} />
         })}
     </ul>
 )

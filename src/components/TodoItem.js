@@ -29,8 +29,8 @@ export default class TodoItem extends Component {
     }
 
     render() {
-        const { todo, completeTodo, deleteTodo} = this.props;
-        let element
+        const { todo, completeTodo, deleteTodo } = this.props;
+        let element;
         if (this.state.editing) {
             element = (
                 <TodoTextInput 

@@ -3,7 +3,7 @@ import Header from '../containers/Header';
 import MainSection from '../containers/MainSection';
 
 const App = () => (
-  <div>
+  <div className="todoapp">
     <Header />
     <MainSection />
   </div>

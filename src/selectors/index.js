@@ -4,7 +4,7 @@ import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from "../constants/TodoFilters"
 const getVisibilityFilter = state => state.visibilityFilter;
 const getTodos = state => state.todos;
 
-export const getVisibileTodos = createSelector(
+export const getVisibleTodos = createSelector(
     [getVisibilityFilter, getTodos],
     (visibilityFilter, todos) => {
         switch (visibilityFilter) {

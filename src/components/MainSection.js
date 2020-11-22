@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import VisibleTodoList from '../containers/VisibleTodoList';
+import Footer from './Footer';
 
 const MainSection = ({ todosCount, completedCount, actions }) => (
     <section className="main">
@@ -19,6 +20,14 @@ const MainSection = ({ todosCount, completedCount, actions }) => (
 
         <VisibleTodoList />
 
+        {
+            !!todosCount &&
+            <Footer
+                completedCount={completedCount}
+                activeCount={todosCount - completedCount}
+                onClearCompleted={actions.clearCompleted}
+            />
+        }
     </section>
 )
 

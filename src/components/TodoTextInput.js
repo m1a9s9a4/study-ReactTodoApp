@@ -48,7 +48,7 @@ export default class TodoTextInput extends Component {
                 value={this.state.text}
                 onBlur={this.handleBlue}
                 onChange={this.handleChange}
-                onSubmit={this.handleSubmit}
+                onKeyDown={this.handleSubmit}
             />
         )
     }

@@ -8,9 +8,11 @@ const Header = ({ addTodo }) => (
         <TodoTextInput 
             newTodo
             onSave={(text) => {
+                console.log('header onsave');
                 if (text.length !== 0) {
                     addTodo(text)
                 }
+                console.log('header onsaveds');
             }}
             placeholder="enter your todo"
         />

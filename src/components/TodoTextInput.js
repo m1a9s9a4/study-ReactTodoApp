@@ -18,7 +18,9 @@ export default class TodoTextInput extends Component {
     handleSubmit = e => {
         const text = e.target.value.trim();
         if (e.which === 13) {
+            console.log('in todo text input1');
             this.props.onSave(text);
+            console.log('in todo text input2');
             if (this.props.newTodo) {
                 this.setState({ text: '' });
             }
